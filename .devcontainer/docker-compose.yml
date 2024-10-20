@@ -1,0 +1,143 @@
+services:
+  app:
+    platform: linux/amd64
+    cpus: 2
+    mem_limit: 4g
+    mem_swappiness: 20g
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.app
+      args:
+        USERNAME: ${USERNAME}
+        HELIX_VERSION: ${HELIX_VERSION}
+        USER_GID: ${USER_GID}
+        USER_UID: ${USER_UID}
+        DOTFILES_REPO: ${DOTFILES_REPO}
+        DOTFILES_SETUP_SH: ${DOTFILES_SETUP_SH}
+        DOCKER_BUILDKIT: 1
+
+    env_file:
+      - .env
+
+    volumes:
+      - ../:/workspace
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+      - SYS_PTRACE
+    security_opt:
+      - seccomp=unconfined
+    networks:
+      - subnet1
+
+  app2:
+    platform: linux/amd64
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.app
+      args:
+        USERNAME: ${USERNAME}
+        HELIX_VERSION: ${HELIX_VERSION}
+        USER_GID: ${USER_GID}
+        USER_UID: ${USER_UID}
+        DOTFILES_REPO: ${DOTFILES_REPO}
+        DOTFILES_SETUP_SH: ${DOTFILES_SETUP_SH}
+        DOCKER_BUILDKIT: 1
+
+    env_file:
+      - .env
+
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+      - SYS_PTRACE
+    security_opt:
+      - seccomp=unconfined
+    networks:
+      - subnet1
+
+  app3:
+    platform: linux/amd64
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.app
+      args:
+        USERNAME: ${USERNAME}
+        HELIX_VERSION: ${HELIX_VERSION}
+        USER_GID: ${USER_GID}
+        USER_UID: ${USER_UID}
+        DOTFILES_REPO: ${DOTFILES_REPO}
+        DOTFILES_SETUP_SH: ${DOTFILES_SETUP_SH}
+        DOCKER_BUILDKIT: 1
+
+    env_file:
+      - .env
+
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+      - SYS_PTRACE
+    security_opt:
+      - seccomp=unconfined
+    networks:
+      - subnet1
+
+  app4:
+    platform: linux/amd64
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.app
+      args:
+        USERNAME: ${USERNAME}
+        HELIX_VERSION: ${HELIX_VERSION}
+        USER_GID: ${USER_GID}
+        USER_UID: ${USER_UID}
+        DOTFILES_REPO: ${DOTFILES_REPO}
+        DOTFILES_SETUP_SH: ${DOTFILES_SETUP_SH}
+        DOCKER_BUILDKIT: 1
+
+    env_file:
+      - .env
+
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+      - SYS_PTRACE
+    security_opt:
+      - seccomp=unconfined
+    networks:
+      - subnet2
+
+  app5:
+    platform: linux/amd64
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.app
+      args:
+        USERNAME: ${USERNAME}
+        HELIX_VERSION: ${HELIX_VERSION}
+        USER_GID: ${USER_GID}
+        USER_UID: ${USER_UID}
+        DOTFILES_REPO: ${DOTFILES_REPO}
+        DOTFILES_SETUP_SH: ${DOTFILES_SETUP_SH}
+        DOCKER_BUILDKIT: 1
+
+    env_file:
+      - .env
+
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+      - SYS_PTRACE
+    security_opt:
+      - seccomp=unconfined
+    networks:
+      - subnet2
+
+networks:
+  subnet1:
+    external: true
+    name: ${SUBNET_NAME}
+  subnet2:
+    external: true
+    name: ${SUBNET2_NAME}

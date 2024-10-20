@@ -1,0 +1,27 @@
+{
+    "name": "py-network",
+    "service": "app",
+    "initializeCommand": "./.devcontainer/scripts/setup_network.sh",
+    "dockerComposeFile": [
+        "docker-compose.yml"
+    ],
+    "workspaceFolder": "/workspace",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "mads-hartmann.bash-ide-vscode",
+                "ms-vscode.cpptools",
+                "llvm-vs-code-extensions.vscode-clangd",
+                "redhat.vscode-yaml",
+                "tamasfe.even-better-toml",
+                "EditorConfig.EditorConfig",
+                "charliermarsh.ruff"
+            ]
+        }
+    },
+    "remoteUser": "x",
+    "containerUser": "x",
+    "features": {},
+    "shutdownAction": "none"
+    // "postCreateCommand": ""
+}
